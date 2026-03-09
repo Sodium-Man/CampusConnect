@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 const dummyEvents = [
     {
-        title: "Tech Symposium 2026",
+        title: "Tech Synapse 2026",
         date: "March 15, 2026",
         price: "$25",
         image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&auto=format&fit=crop"
