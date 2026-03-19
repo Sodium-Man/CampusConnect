@@ -1,0 +1,144 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | CampusConnect</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="../css/style.css">
+
+  <!-- Admin CSS -->
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">
+      <a href="../index.html">Campus<span>Connect</span></a>
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="events.html">MyEvents</a></li>
+      <li><a href="create-event.html">Create Event</a></li>
+      <li><a href="admin_dashboard.html" class="active">Admin</a></li>
+    </ul>
+
+    <div class="auth-buttons">
+      <a href="login.html" class="btn-login">Login</a>
+      <a href="register.html" class="btn-register">Register</a>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <div class="page-header">
+    <div class="page-header-inner">
+      <div>
+        <h1>Admin <span>Dashboard</span></h1>
+        <p>Overview of all users, events, and platform activity.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="dashboard-wrapper">
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon orange">🎟️</div>
+        <div class="stat-info">
+          <div class="stat-value">24</div>
+          <div class="stat-label">Total Events</div>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon blue">👥</div>
+        <div class="stat-info">
+          <div class="stat-value">138</div>
+          <div class="stat-label">Registered Users</div>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon green">✅</div>
+        <div class="stat-info">
+          <div class="stat-value">17</div>
+          <div class="stat-label">Confirmed Events</div>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon red">⚠️</div>
+        <div class="stat-info">
+          <div class="stat-value">3</div>
+          <div class="stat-label">Pending Review</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="dash-section-title">⚡ Quick Actions</div>
+    <div class="quick-actions">
+      <a href="create-event.html" class="quick-action-btn">➕ Create Event</a>
+      <a href="event-management.html" class="quick-action-btn">📋 Manage Events</a>
+      <a href="register.html" class="quick-action-btn">👤 Add User</a>
+      <button class="quick-action-btn" onclick="showReport()">📊 View Reports</button>
+    </div>
+
+    <!-- Users -->
+    <div class="dash-columns">
+      <div>
+        <div class="dash-section-title">👥 Registered Users</div>
+        <div class="panel">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>User</th>
+                <th>Role</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="usersTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div>
+        <div class="dash-section-title">🕐 Recent Activity</div>
+        <div class="panel">
+          <ul class="activity-feed" id="activityFeed"></ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Events -->
+    <div class="dash-section-title">🎉 All Events</div>
+    <div class="panel">
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>Event</th>
+            <th>Date</th>
+            <th>Organiser</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="eventsTableBody"></tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <script src="../js/admin.js"></script>
+  <script src="../js/main.js"></script>
+
+</body>
+</html>
