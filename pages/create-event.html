@@ -1,0 +1,613 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Create Event - CampusConnect</title>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+			rel="stylesheet"
+		/>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			body {
+				font-family:
+					'Inter',
+					-apple-system,
+					BlinkMacSystemFont,
+					'Segoe UI',
+					sans-serif;
+				line-height: 1.6;
+				color: #334155;
+				background-color: #f8fafc;
+			}
+
+			.navbar {
+				background-color: #1a2b4c;
+				padding: 1rem 5%;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				position: sticky;
+				top: 0;
+				z-index: 1000;
+				box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+			}
+			.logo a {
+				color: #fff;
+				font-size: 1.8rem;
+				font-weight: 700;
+				text-decoration: none;
+				letter-spacing: -0.5px;
+			}
+			.logo span {
+				color: #f97316;
+			}
+			.nav-links {
+				display: flex;
+				list-style: none;
+				gap: 2rem;
+			}
+			.nav-links a {
+				color: rgba(255, 255, 255, 0.9);
+				text-decoration: none;
+				font-weight: 500;
+				padding: 0.5rem 1rem;
+				border-radius: 6px;
+				transition: all 0.3s;
+			}
+			.nav-links a:hover,
+			.nav-links a.active {
+				background-color: #f97316;
+				color: #fff;
+				transform: translateY(-2px);
+			}
+			.auth-buttons {
+				display: flex;
+				gap: 1rem;
+			}
+			.btn-login,
+			.btn-register {
+				padding: 0.5rem 1.2rem;
+				border-radius: 6px;
+				text-decoration: none;
+				font-weight: 500;
+				transition: all 0.3s;
+			}
+			.btn-login {
+				color: #fff;
+				border: 1px solid rgba(255, 255, 255, 0.3);
+			}
+			.btn-login:hover {
+				background: rgba(255, 255, 255, 0.1);
+				border-color: #f97316;
+			}
+			.btn-register {
+				background: #f97316;
+				color: #fff;
+			}
+			.btn-register:hover {
+				background: #ea580c;
+				transform: translateY(-2px);
+			}
+
+			.page-header {
+				background: linear-gradient(135deg, #1a2b4c 0%, #2c3e6e 100%);
+				color: #fff;
+				padding: 3rem 5%;
+				text-align: center;
+			}
+			.page-header h1 {
+				font-size: 2.5rem;
+				margin-bottom: 0.5rem;
+			}
+			.page-header h1 span {
+				color: #f97316;
+			}
+			.page-header p {
+				opacity: 0.85;
+				font-size: 1.1rem;
+			}
+
+			.form-container {
+				max-width: 800px;
+				margin: 3rem auto;
+				padding: 0 5%;
+			}
+
+			.form-card {
+				background: #fff;
+				border-radius: 16px;
+				padding: 2.5rem;
+				box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+				border: 1px solid #e2e8f0;
+			}
+
+			.form-card h2 {
+				font-size: 1.5rem;
+				color: #1a2b4c;
+				margin-bottom: 1.8rem;
+				padding-bottom: 1rem;
+				border-bottom: 2px solid #f1f5f9;
+				display: flex;
+				align-items: center;
+				gap: 0.6rem;
+			}
+
+			.form-grid {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 1.4rem;
+			}
+			.form-group {
+				display: flex;
+				flex-direction: column;
+				gap: 0.4rem;
+			}
+			.form-group.full-width {
+				grid-column: 1 / -1;
+			}
+
+			label {
+				font-weight: 600;
+				font-size: 0.9rem;
+				color: #1a2b4c;
+			}
+			label .required {
+				color: #f97316;
+				margin-left: 2px;
+			}
+			label .optional {
+				color: #94a3b8;
+				font-weight: 400;
+				font-size: 0.8rem;
+				margin-left: 4px;
+			}
+
+			input,
+			textarea,
+			select {
+				padding: 0.75rem 1rem;
+				border: 2px solid #e2e8f0;
+				border-radius: 8px;
+				font-family: inherit;
+				font-size: 0.95rem;
+				color: #334155;
+				transition:
+					border-color 0.2s,
+					box-shadow 0.2s;
+				background: #f8fafc;
+				width: 100%;
+			}
+			input:focus,
+			textarea:focus,
+			select:focus {
+				outline: none;
+				border-color: #f97316;
+				box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.12);
+				background: #fff;
+			}
+			input.error,
+			textarea.error,
+			select.error {
+				border-color: #ef4444;
+				box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+			}
+			textarea {
+				resize: vertical;
+				min-height: 110px;
+			}
+
+			.error-msg {
+				font-size: 0.8rem;
+				color: #ef4444;
+				font-weight: 500;
+				display: none;
+				margin-top: 2px;
+			}
+			.error-msg.visible {
+				display: block;
+			}
+
+			.date-row {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 1.4rem;
+			}
+
+			.form-actions {
+				display: flex;
+				gap: 1rem;
+				margin-top: 2rem;
+				justify-content: flex-end;
+			}
+			.btn-create {
+				background: #f97316;
+				color: #fff;
+				padding: 0.85rem 2.2rem;
+				border: none;
+				border-radius: 8px;
+				font-family: inherit;
+				font-size: 1rem;
+				font-weight: 700;
+				cursor: pointer;
+				transition: all 0.3s;
+			}
+			.btn-create:hover {
+				background: #ea580c;
+				transform: translateY(-2px);
+				box-shadow: 0 6px 16px rgba(249, 115, 22, 0.3);
+			}
+			.btn-reset {
+				background: transparent;
+				color: #64748b;
+				padding: 0.85rem 2.2rem;
+				border: 2px solid #e2e8f0;
+				border-radius: 8px;
+				font-family: inherit;
+				font-size: 1rem;
+				font-weight: 600;
+				cursor: pointer;
+				transition: all 0.3s;
+			}
+			.btn-reset:hover {
+				border-color: #cbd5e1;
+				background: #f1f5f9;
+				color: #334155;
+			}
+
+			.footer {
+				background: #1a2b4c;
+				color: #fff;
+				padding: 3rem 5% 1rem;
+				margin-top: 4rem;
+			}
+			.footer-content {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+				gap: 2rem;
+				margin-bottom: 2rem;
+			}
+			.footer-section h4 {
+				margin-bottom: 1rem;
+				color: #f97316;
+			}
+			.footer-section ul {
+				list-style: none;
+			}
+			.footer-section ul li {
+				margin-bottom: 0.5rem;
+			}
+			.footer-section a {
+				color: rgba(255, 255, 255, 0.8);
+				text-decoration: none;
+				transition: color 0.3s;
+			}
+			.footer-section a:hover {
+				color: #f97316;
+			}
+			.footer-bottom {
+				text-align: center;
+				padding-top: 2rem;
+				border-top: 1px solid rgba(255, 255, 255, 0.1);
+			}
+
+			@media (max-width: 640px) {
+				.form-grid,
+				.date-row {
+					grid-template-columns: 1fr;
+				}
+				.form-actions {
+					flex-direction: column-reverse;
+				}
+				.btn-create,
+				.btn-reset {
+					width: 100%;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<!-- Navbar -->
+		<nav class="navbar">
+			<div class="logo">
+				<a href="../index.html">Campus<span>Connect</span></a>
+			</div>
+			<ul class="nav-links">
+				<li><a href="../index.html">Home</a></li>
+				<li><a href="events.html">Events</a></li>
+				<li><a href="event-management.html">My Events</a></li>
+				<li><a href="create-event.html" class="active">Create Event</a></li>
+				<li><a href="admin-dashboard.html">Admin</a></li>
+			</ul>
+			<div class="auth-buttons">
+				<a href="login.html" class="btn-login">Login</a>
+				<a href="register.html" class="btn-register">Register</a>
+			</div>
+		</nav>
+
+		<!-- Page Header -->
+		<div class="page-header">
+			<h1>Create a <span>New Event</span></h1>
+			<p>Fill in the details below to list your event on CampusConnect.</p>
+		</div>
+
+		<!-- Form -->
+		<div class="form-container">
+			<div class="form-card">
+				<h2>🎉 Event Details</h2>
+
+				<form id="createEventForm" novalidate>
+					<!-- Title -->
+					<div class="form-group full-width" style="margin-bottom: 1.4rem">
+						<label for="eventTitle"
+							>Event Title <span class="required">*</span></label
+						>
+						<input
+							type="text"
+							id="eventTitle"
+							placeholder="e.g. Tech Synapse 2026"
+						/>
+						<span class="error-msg" id="eventTitleError"
+							>Please enter an event title.</span
+						>
+					</div>
+
+					<!-- Description -->
+					<div class="form-group full-width" style="margin-bottom: 1.4rem">
+						<label for="eventDescription"
+							>Description <span class="required">*</span></label
+						>
+						<textarea
+							id="eventDescription"
+							placeholder="Describe your event — what to expect, who should attend, highlights…"
+						></textarea>
+						<span class="error-msg" id="eventDescriptionError"
+							>Please enter a description.</span
+						>
+					</div>
+
+					<!-- Dates -->
+					<div class="date-row" style="margin-bottom: 1.4rem">
+						<div class="form-group">
+							<label for="startDate"
+								>Start Date &amp; Time <span class="required">*</span></label
+							>
+							<input type="datetime-local" id="startDate" />
+							<span class="error-msg" id="startDateError"
+								>Please select a start date.</span
+							>
+						</div>
+						<div class="form-group">
+							<label for="endDate"
+								>End Date &amp; Time <span class="required">*</span></label
+							>
+							<input type="datetime-local" id="endDate" />
+							<span class="error-msg" id="endDateError"
+								>Please select an end date.</span
+							>
+						</div>
+					</div>
+
+					<!-- Location + Capacity -->
+					<div class="form-grid" style="margin-bottom: 1.4rem">
+						<div class="form-group">
+							<label for="location"
+								>Location <span class="required">*</span></label
+							>
+							<input
+								type="text"
+								id="location"
+								placeholder="e.g. Building A, Room 101"
+							/>
+							<span class="error-msg" id="locationError"
+								>Please enter a location.</span
+							>
+						</div>
+						<div class="form-group">
+							<label for="capacity"
+								>Capacity <span class="required">*</span></label
+							>
+							<input
+								type="number"
+								id="capacity"
+								min="1"
+								placeholder="e.g. 200"
+							/>
+							<span class="error-msg" id="capacityError"
+								>Please enter a capacity.</span
+							>
+						</div>
+					</div>
+
+					<div class="form-grid" style="margin-bottom: 1.4rem">
+						<div class="form-group">
+							<label for="price"
+								>Price ($) <span class="required">*</span></label
+							>
+							<input
+								type="number"
+								id="price"
+								min="0"
+								step="0.01"
+								placeholder="0.00 for free events"
+							/>
+							<span class="error-msg" id="priceError"
+								>Please enter a price (use 0 for free).</span
+							>
+						</div>
+						<div class="form-group">
+							<label for="status">Status <span class="required">*</span></label>
+							<select id="status">
+								<option value="">— Select status —</option>
+								<option value="Draft">Draft</option>
+								<option value="Confirmed">Confirmed</option>
+								<option value="Cancelled">Cancelled</option>
+							</select>
+							<span class="error-msg" id="statusError"
+								>Please select a status.</span
+							>
+						</div>
+					</div>
+
+					<div class="form-group full-width" style="margin-bottom: 1.4rem">
+						<label for="eventImage"
+							>Event Image <span class="optional">(optional)</span></label
+						>
+						<input type="file" id="eventImage" accept="image/*" />
+					</div>
+
+					<div class="form-actions">
+						<button type="button" class="btn-reset" id="resetBtn">
+							Reset Form
+						</button>
+						<button type="submit" class="btn-create">✚ Create Event</button>
+					</div>
+				</form>
+			</div>
+		</div>
+
+		<!-- Footer -->
+		<footer class="footer">
+			<div class="footer-content">
+				<div class="footer-section">
+					<h4>CampusConnect</h4>
+					<p>
+						Making event organisation easy and accessible for everyone on
+						campus.
+					</p>
+				</div>
+				<div class="footer-section">
+					<h4>Quick Links</h4>
+					<ul>
+						<li><a href="events.html">Browse Events</a></li>
+						<li><a href="create-event.html">Create Event</a></li>
+						<li><a href="register.html">Register</a></li>
+						<li><a href="login.html">Login</a></li>
+					</ul>
+				</div>
+				<div class="footer-section">
+					<h4>Contact</h4>
+					<ul>
+						<li>📧 events@campusconnect.edu</li>
+						<li>📞 (03) 1234 5678</li>
+						<li>📍 Melbourne</li>
+					</ul>
+				</div>
+			</div>
+			<div class="footer-bottom">
+				<p>
+					&copy; 2026 CampusConnect. All rights reserved. | KIT502 Assignment 1
+				</p>
+			</div>
+		</footer>
+
+		<script>
+			document.querySelectorAll('.nav-links a').forEach((link) => {
+				const page = link.getAttribute('href').split('/').pop();
+				if (page === 'create-event.html') link.classList.add('active');
+			});
+
+			const requiredFields = [
+				'eventTitle',
+				'eventDescription',
+				'startDate',
+				'endDate',
+				'location',
+				'capacity',
+				'price',
+				'status',
+			];
+
+			function showError(id, msg) {
+				const input = document.getElementById(id);
+				const errEl = document.getElementById(id + 'Error');
+				input.classList.add('error');
+				if (errEl) {
+					errEl.textContent = msg;
+					errEl.classList.add('visible');
+				}
+			}
+
+			function clearError(id) {
+				const input = document.getElementById(id);
+				const errEl = document.getElementById(id + 'Error');
+				input.classList.remove('error');
+				if (errEl) errEl.classList.remove('visible');
+			}
+
+			requiredFields.forEach((id) => {
+				const el = document.getElementById(id);
+				el.addEventListener('blur', () => validateField(id));
+				el.addEventListener('input', () => {
+					if (el.classList.contains('error')) validateField(id);
+				});
+			});
+
+			function validateField(id) {
+				const el = document.getElementById(id);
+				const val = el.value.trim();
+
+				if (val === '' || val === null) {
+					showError(id, getDefaultMsg(id));
+					return false;
+				}
+
+				if (id === 'endDate') {
+					const start = document.getElementById('startDate').value;
+					if (start && val <= start) {
+						showError('endDate', 'End date must be after start date.');
+						return false;
+					}
+				}
+
+				clearError(id);
+				return true;
+			}
+
+			function getDefaultMsg(id) {
+				const msgs = {
+					eventTitle: 'Please enter an event title.',
+					eventDescription: 'Please enter a description.',
+					startDate: 'Please select a start date.',
+					endDate: 'Please select an end date.',
+					location: 'Please enter a location.',
+					capacity: 'Please enter the capacity.',
+					price: 'Please enter a price (use 0 for free).',
+					status: 'Please select a status.',
+				};
+				return msgs[id] || 'This field is required.';
+			}
+
+			// ── Form submit ──
+			document
+				.getElementById('createEventForm')
+				.addEventListener('submit', function (e) {
+					e.preventDefault();
+
+					let valid = true;
+					requiredFields.forEach((id) => {
+						if (!validateField(id)) valid = false;
+					});
+
+					if (!valid) return;
+
+					alert('New event has been created');
+					window.location.href = 'event-management.html';
+				});
+
+			// ── Reset button ──
+			document
+				.getElementById('resetBtn')
+				.addEventListener('click', function () {
+					document.getElementById('createEventForm').reset();
+					requiredFields.forEach((id) => clearError(id));
+				});
+		</script>
+	</body>
+</html>
