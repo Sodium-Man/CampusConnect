@@ -1,25 +1,32 @@
 // ===== RUN AFTER PAGE LOAD =====
 document.addEventListener('DOMContentLoaded', function () {
 
-    // ===== ACTIVE NAV LINK =====
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
 
-    // Main nav links
+    // ===== ACTIVE NAV LINK =====
     document.querySelectorAll('.nav-links a').forEach(link => {
         link.classList.remove('active');
-        if (link.getAttribute('href').split('/').pop() === currentPage) {
+
+        const linkPage = link.getAttribute('href').split('/').pop();
+
+        if (linkPage === currentPage) {
             link.classList.add('active');
         }
     });
 
-    // Auth buttons (Login/Register)
+    // Extra safety for home page (from main)
+    if (currentPage === '' || currentPage === 'index.html') {
+        document.querySelector('.nav-links a[href="index.html"]')?.classList.add('active');
+    }
+
+    // ===== AUTH BUTTONS =====
     document.querySelectorAll('.auth-buttons a').forEach(link => {
         if (link.getAttribute('href').split('/').pop() === currentPage) {
             link.classList.add('active');
         }
     });
 
-    // Load events if present
+    // ===== LOAD EVENTS =====
     if (document.querySelector('.events-grid')) {
         loadFeaturedEvents();
     }
@@ -28,30 +35,35 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // ===== DUMMY EVENTS =====
 const dummyEvents = [
-    {
-        title: "Tech Synapse 2026",
-        date: "March 15, 2026",
-        price: "$25",
-        image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&auto=format&fit=crop"
-    },
-    {
-        title: "Cultural Fest",
-        date: "April 5, 2026",
-        price: "$15",
-        image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&auto=format&fit=crop"
-    },
-    {
-        title: "Career Fair",
-        date: "May 10, 2026",
-        price: "Free",
-        image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800&auto=format&fit=crop"
-    }
+	{
+		title: 'Tech Synapse 2026',
+		date: 'March 15, 2026',
+		price: '$25',
+		image:
+			'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&auto=format&fit=crop',
+	},
+	{
+		title: 'Cultural Fest',
+		date: 'April 5, 2026',
+		price: '$15',
+		image:
+			'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&auto=format&fit=crop',
+	},
+	{
+		title: 'Career Fair',
+		date: 'May 10, 2026',
+		price: 'Free',
+		image:
+			'https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800&auto=format&fit=crop',
+	},
 ];
 
 
 // ===== LOAD EVENTS =====
 function loadFeaturedEvents() {
     const grid = document.querySelector('.events-grid');
+    if (!grid) return;
+
     grid.innerHTML = '';
 
     dummyEvents.forEach(event => {
@@ -84,10 +96,9 @@ function createEventCard(event) {
     return card;
 }
 
-
 // ===== BUY TICKET =====
 function buyTicket(title) {
-    alert(`You clicked Buy Ticket for: ${title}`);
+    alert(`You clicked Buy Ticket for: ${title}\nThis will redirect to ticket purchase in Assignment 2.`);
 }
 
 
@@ -118,7 +129,8 @@ function validateRegister() {
     const confirm = document.getElementById('confirmPassword').value;
 
     ['nameGroup','emailGroup','passwordGroup','confirmGroup'].forEach(clearError);
-    document.getElementById('roleError').classList.remove('show');
+    const roleError = document.getElementById('roleError');
+    if (roleError) roleError.classList.remove('show');
 
     if (!role) {
         document.getElementById('roleError').classList.add('show');
@@ -191,3 +203,4 @@ function resetForm() {
 function resetLogin() {
     document.getElementById('loginForm').reset();
 }
+

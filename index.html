@@ -1,120 +1,149 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CampusEvents - Your College Event Hub</title>
-    <link rel="stylesheet" href="css/style.css">
-    <!-- Googly Fonts <3 -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-</head>
-<body>
-    <!-- Navy Bar -->
-    <nav class="navbar">
-        <div class="logo">
-            <a href="index.html">Campus<span>Connect</span></a>
-        </div>
-        
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="pages/events.html">Events</a></li>
-            <li><a href="pages/event-management.html">My Events</a></li>
-            <li><a href="pages/create-event.html">Create Event</a></li>
-            <li><a href="pages/admin-dashboard.html">Admin</a></li>
-        </ul>
-        
-        <div class="auth-buttons">
-            <a href="pages/login.html" class="btn-login">Login</a>
-            <a href="pages/register.html" class="btn-register">Register</a>
-        </div>
-    </nav>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>CampusEvents - Your College Event Hub</title>
+		<link rel="stylesheet" href="css/style.css" />
+		<!-- Googly Fonts <3 -->
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+			rel="stylesheet"
+		/>
+	</head>
+	<body>
+		<!-- Navy Bar -->
+		<nav class="navbar">
+			<div class="logo">
+				<a href="index.html">Campus<span>Connect</span></a>
+			</div>
 
-    <!-- SuperHero Section grrr -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>
-                Discover & Join
-                <span>Amazing College Events</span>
-            </h1>
-            <p>
-                Welcome to CampusConnect - your one-stop platform for discovering, organizing, 
-                and participating in the most exciting events across campus. From tech fests 
-                to cultural events, find your next memorable experience here!
-            </p>
-            <div class="cta-buttons">
-                <a href="pages/events.html" class="btn-primary">Explore Events</a>
-                <a href="pages/register.html" class="btn-secondary">Join as Organizer</a>
-            </div>
-        </div>
-        <div class="hero-image">
-            <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=800&auto=format&fit=crop" 
-                 alt="College students at an event"
-                 onerror="this.src='https://via.placeholder.com/600x400?text=Campus+Events'">
-        </div>
-    </section>
+			<ul class="nav-links">
+				<li><a href="index.html">Home</a></li>
+				<li><a href="pages/events.html">Events</a></li>
+				<li><a href="pages/event-management.html">My Events</a></li>
+				<li><a href="pages/create-event.html">Create Event</a></li>
+				<li><a href="pages/admin-dashboard.html">Admin</a></li>
+			</ul>
 
-    <section class="featured-events">
-        <div class="container">
-            <h2 class="section-title">Featured Events</h2>
-            <div class="events-grid">
-            </div>
-        </div>
-    </section>
+			<div class="auth-buttons">
+				<a href="pages/login.html" class="btn-login">Login</a>
+				<a href="pages/register.html" class="btn-register">Register</a>
+			</div>
+		</nav>
 
-    <!-- United States (US) Section hehehehe-->
-    <section class="featured-events" style="background-color: #f8fafc;">
-        <div class="container">
-            <h2 class="section-title">Why CampusConnect?</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
-                <div style="text-align: center; padding: 2rem;">
-                    <div style="font-size: 3rem; margin-bottom: 1rem;">🎯</div>
-                    <h3>For Attendees</h3>
-                    <p>Discover events that match your interests, buy tickets easily, and never miss out on campus life.</p>
-                </div>
-                <div style="text-align: center; padding: 2rem;">
-                    <div style="font-size: 3rem; margin-bottom: 1rem;">🎪</div>
-                    <h3>For Organizers</h3>
-                    <p>Create and manage events effortlessly. Track attendees, manage capacity, and grow your community.</p>
-                </div>
-                <div style="text-align: center; padding: 2rem;">
-                    <div style="font-size: 3rem; margin-bottom: 1rem;">👥</div>
-                    <h3>For Everyone</h3>
-                    <p>Join a vibrant community. Network, learn, and create memories that last a lifetime.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+		<!-- SuperHero Section grrr -->
+		<section class="hero">
+			<div class="hero-content">
+				<h1>
+					Discover & Join
+					<span>Amazing College Events</span>
+				</h1>
+				<p>
+					Welcome to CampusConnect - your one-stop platform for discovering,
+					organizing, and participating in the most exciting events across
+					campus. From tech fests to cultural events, find your next memorable
+					experience here!
+				</p>
+				<div class="cta-buttons">
+					<a href="pages/events.html" class="btn-primary">Explore Events</a>
+					<a href="pages/register.html" class="btn-secondary"
+						>Join as Organizer</a
+					>
+				</div>
+			</div>
+			<div class="hero-image">
+				<img
+					src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=800&auto=format&fit=crop"
+					alt="College students at an event"
+					onerror="
+						this.src = 'https://via.placeholder.com/600x400?text=Campus+Events'
+					"
+				/>
+			</div>
+		</section>
 
-    <!-- Footyyy Lesgooo -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4>CampusConnect</h4>
-                <p>Making event organization easy and accessible for everyone on campus.</p>
-            </div>
-            <div class="footer-section">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="pages/events.html">Browse Events</a></li>
-                    <li><a href="pages/create-event.html">Create Event</a></li>
-                    <li><a href="pages/register.html">Register</a></li>
-                    <li><a href="pages/login.html">Login</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Contact</h4>
-                <ul>
-                    <li>📧 events@campusconnect.edu</li>
-                    <li>📞 (03) 1234 5678</li>
-                    <li>📍 Melbourne</li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 CampusConnect. All rights reserved. | KIT502 Assignment 1</p>
-        </div>
-    </footer>
+		<section class="featured-events">
+			<div class="container">
+				<h2 class="section-title">Featured Events</h2>
+				<div class="events-grid"></div>
+			</div>
+		</section>
 
-    <script src="js/main.js"></script>
-</body>
+		<!-- United States (US) Section hehehehe-->
+		<section class="featured-events" style="background-color: #f8fafc">
+			<div class="container">
+				<h2 class="section-title">Why CampusConnect?</h2>
+				<div
+					style="
+						display: grid;
+						grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+						gap: 2rem;
+					"
+				>
+					<div style="text-align: center; padding: 2rem">
+						<div style="font-size: 3rem; margin-bottom: 1rem">🎯</div>
+						<h3>For Attendees</h3>
+						<p>
+							Discover events that match your interests, buy tickets easily, and
+							never miss out on campus life.
+						</p>
+					</div>
+					<div style="text-align: center; padding: 2rem">
+						<div style="font-size: 3rem; margin-bottom: 1rem">🎪</div>
+						<h3>For Organizers</h3>
+						<p>
+							Create and manage events effortlessly. Track attendees, manage
+							capacity, and grow your community.
+						</p>
+					</div>
+					<div style="text-align: center; padding: 2rem">
+						<div style="font-size: 3rem; margin-bottom: 1rem">👥</div>
+						<h3>For Everyone</h3>
+						<p>
+							Join a vibrant community. Network, learn, and create memories that
+							last a lifetime.
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Footyyy Lesgooo -->
+		<footer class="footer">
+			<div class="footer-content">
+				<div class="footer-section">
+					<h4>CampusConnect</h4>
+					<p>
+						Making event organization easy and accessible for everyone on
+						campus.
+					</p>
+				</div>
+				<div class="footer-section">
+					<h4>Quick Links</h4>
+					<ul>
+						<li><a href="pages/events.html">Browse Events</a></li>
+						<li><a href="pages/create-event.html">Create Event</a></li>
+						<li><a href="pages/register.html">Register</a></li>
+						<li><a href="pages/login.html">Login</a></li>
+					</ul>
+				</div>
+				<div class="footer-section">
+					<h4>Contact</h4>
+					<ul>
+						<li>📧 events@campusconnect.edu</li>
+						<li>📞 (03) 1234 5678</li>
+						<li>📍 Melbourne</li>
+					</ul>
+				</div>
+			</div>
+			<div class="footer-bottom">
+				<p>
+					&copy; 2026 CampusConnect. All rights reserved. | KIT502 Assignment 1
+				</p>
+			</div>
+		</footer>
+
+		<script src="js/main.js"></script>
+	</body>
 </html>
