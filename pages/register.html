@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register | CampusConnect</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="logo">
+      <a href="index.html">Campus<span>Connect</span></a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="event-management.html">My Events</a></li>
+      <li><a href="create-event.html">Create Event</a></li>
+      <li><a href="admin-dashboard.html">Admin</a></li>
+    </ul>
+    <div class="auth-buttons">
+      <a href="login.html" class="btn-login">Login</a>
+      <a href="register.html" class="btn-register active">Register</a>
+    </div>
+  </nav>
+
+  <div class="page-wrapper">
+    <div class="auth-card">
+      <div class="auth-header">
+        <div class="brand">Campus<span>Connect</span></div>
+        <h2>Create Account</h2>
+        <p>Join the campus community today</p>
+      </div>
+      <div class="divider"></div>
+
+      <form id="registerForm" onsubmit="return validateRegister()">
+
+        <!-- Role picker -->
+        <div class="form-group">
+          <label>I am a...</label>
+        </div>
+        <div class="role-selector">
+          <div class="role-option">
+            <input type="radio" name="role" id="roleAttendee" value="Event Attendee">
+            <label for="roleAttendee">
+              <span class="icon">🎟️</span>
+              Event Attendee
+            </label>
+          </div>
+          <div class="role-option">
+            <input type="radio" name="role" id="roleOrganiser" value="Organiser">
+            <label for="roleOrganiser">
+              <span class="icon">🎪</span>
+              Organiser
+            </label>
+          </div>
+        </div>
+        <div class="role-error" id="roleError">Please select a role.</div>
+
+        <div class="form-group" id="nameGroup">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" placeholder="Jane Smith" autocomplete="name">
+          <span class="form-error" id="nameError">Full name is required.</span>
+        </div>
+
+        <div class="form-group" id="emailGroup">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" placeholder="you@example.com" autocomplete="email">
+          <span class="form-error" id="emailError">Please enter a valid email address.</span>
+        </div>
+
+        <div class="form-group" id="passwordGroup">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="Create a strong password" autocomplete="new-password" oninput="checkPasswordStrength()">
+          <ul class="password-requirements">
+            <li id="req-length">At least 6 characters</li>
+            <li id="req-upper">One uppercase letter</li>
+            <li id="req-lower">One lowercase letter</li>
+            <li id="req-special">One special character</li>
+          </ul>
+          <span class="form-error" id="passwordError">Password does not meet requirements.</span>
+        </div>
+
+        <div class="form-group" id="confirmGroup">
+          <label for="confirmPassword">Confirm Password</label>
+          <input type="password" id="confirmPassword" placeholder="Re-enter your password" autocomplete="new-password">
+          <span class="form-error" id="confirmError">Passwords do not match.</span>
+        </div>
+
+        <button type="submit" class="btn-submit">Create Account</button>
+        <button type="button" onclick="resetForm()" class="btn-reset">Reset</button>
+      </form>
+
+      <div class="auth-footer">
+        Already have an account? <a href="login.html">Sign in here</a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>CampusConnect</h4>
+        <p>Making event organization easy and accessible for everyone on campus.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="events.html">Browse Events</a></li>
+          <li><a href="create-event.html">Create Event</a></li>
+          <li><a href="register.html">Register</a></li>
+          <li><a href="login.html">Login</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Contact</h4>
+        <ul>
+          <li>📧 events@campusconnect.edu</li>
+          <li>📞 (03) 1234 5678</li>
+          <li>📍 Melbourne</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 CampusConnect. All rights reserved. | KIT502 Assignment 1</p>
+    </div>
+  </footer>
+  <script src="../js/main.js"></script>
+</body>
+</html>
