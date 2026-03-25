@@ -67,7 +67,6 @@ const dummyEvents = [
 ];
 
 
-// ===== LOAD EVENTS =====
 function loadFeaturedEvents() {
     const grid = document.querySelector('.events-grid');
     grid.innerHTML = '';
